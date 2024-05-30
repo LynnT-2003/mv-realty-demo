@@ -5,13 +5,14 @@ const containerStyle = {
     width: '400px',
     height: '400px'
   };
-  
-  const center = {
-    lat: -3.745,
-    lng: -38.523
-  };
 
-const MapDemo = () => {
+const MapDemo = ({lat, lng}) => {
+
+const center = {
+  // 
+  lat: lat,
+  lng: lng
+};
   
 const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',

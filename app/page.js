@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar/>
       <Hero/>
       <HomeBrowse/>
-      <MapDemo/>
+      <MapDemo lat={13.605239892371365} lng={100.84735795566397}/>
     </>
   );
 }

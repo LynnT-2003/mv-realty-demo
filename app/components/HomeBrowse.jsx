@@ -11,32 +11,38 @@ const HomeBrowse = () => {
   const router = useRouter();
 
   const listings = [
-    {
+    { 
+      id: 1,
       imageSrc: '/mc-1.png',
       title: 'Residential Complex - NS Tau',
       location: 'Sevilla, Palm Harbor',
       description: 'A modern cottage with breathtaking mountain views and an extensive yard, perfect for various types of leisure. The house features four spacious bedrooms and a kitchen area.',
       price: '$5,800/ m',
-      details: ['4', '6', '23x42 m2']
+      details: ['4', '6', '23x42 m2'],
+      lat: 13.605239892371365,
+      lng: 100.84735795566397
     },
     {
+      id: 2,
       imageSrc: '/mc-1.png',
       title: 'Residential Comp 2 - NS Tau',
       location: 'Sevilla, Palm Harbor',
       description: 'A modern cottage with breathtaking mountain views and an extensive yard, perfect for various types of leisure. The house features four spacious bedrooms and a kitchen area.',
       price: '$6,200/ m',
-      details: ['5', '7', '25x45 m2']
+      details: ['5', '7', '25x45 m2'],
+      lat: 13.605239892371365,
+      lng: 100.84735795566397
     }
   ];
 
   return (
-    <div className='my-8 ml-8 mr-4' onClick={() => {
-      router.push("/details")
-    }}>
+    <div className='my-8 ml-8 mr-4'>
       <Grid container spacing={2} className="bg-white rounded-lg">
         <Grid item md={8} className=''>
           {listings.map((listing, index) => (
-            <div key={index}>
+            <div key={index} onClick={() => {
+              router.push(`/details/${listing.id}`)
+            }}>
               <ListingCard
                 imageSrc={listing.imageSrc}
                 title={listing.title}
