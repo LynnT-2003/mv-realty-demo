@@ -1,5 +1,6 @@
 "s"
 import React from 'react'
+import MapDemo from '../../components/MapDemo';
 
 const listings = [
     {
@@ -26,13 +27,16 @@ const listings = [
     }
   ];
 
-const Details = ({id}) => {
-    const listing = listings.find((listing) => listing.id === parseInt(id));
+const Details = ({params}) => {
+    const listing = listings.find((listing) => listing.id === parseInt(params.id));
+    console.log(listings)
     if (!listing) {
         return<div>Listing {id} not found</div>
     }
     return (
-        <div>Details</div>
+        <div className='mt-10 mx-10'>
+            <MapDemo lat={listing.lat} lng={listing.lng} clas/>
+        </div>
     )
 }
 
