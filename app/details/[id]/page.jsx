@@ -1,6 +1,5 @@
-"use client"
+"s"
 import React from 'react'
-import MapDemo from '../../components/MapDemo';
 
 const listings = [
     {
@@ -27,24 +26,13 @@ const listings = [
     }
   ];
 
-const Details = ({params}) => {
-    console.log("Params", params)
-    const listing = listings.find((listing) => listing.id === parseInt(params.id));
-
+const Details = ({id}) => {
+    const listing = listings.find((listing) => listing.id === parseInt(id));
     if (!listing) {
         return<div>Listing {id} not found</div>
     }
-
     return (
-        <div>
-            <h1>Title: {listing.title}</h1>
-            <h1>Location: {listing.location}</h1>
-            <h1>Description: {listing.description}</h1>
-            <h1>Price: {listing.price}</h1>
-            <h1>Lat: {listing.lat}</h1>
-            <h1>Lng: {listing.lng}</h1>
-            <MapDemo lat={listing.lat} lng={listing.lng}/>
-        </div>
+        <div>Details</div>
     )
 }
 

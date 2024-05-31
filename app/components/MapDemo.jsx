@@ -1,5 +1,7 @@
-import React from 'react'
+"use client"
+import React, { useEffect } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { Loader } from '@googlemaps/js-api-loader';
 
 const containerStyle = {
     width: '400px',
@@ -7,44 +9,48 @@ const containerStyle = {
   };
 
 const MapDemo = ({lat, lng}) => {
+  const mapRef = React.useRef(null)
 
-const center = {
-  // 
-  lat: lat,
-  lng: lng
-};
-  
-const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-    })
+  useEffect(() => {
+    const initMap = async () => {
+      const loader = new Loader({
+        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        version: 'weekly'
+      })
 
-    const [map, setMap] = React.useState(null)
+      const {Map} =await loader.importLibrary('maps')
+      const {Marker} = await loader.importLibrary('marker')
+      
+      const position = {
+        lat: lat,
+        lng: lng
+      }
 
-    const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+      // map options
+      const mapOptions = {
+        center: position,
+        zoom: 17,
+        mapId: "SAMPLE_ID"
+      }
 
-    setMap(map)
-    }, [])
+      // setup map
+      const map = new Map(mapRef.current, mapOptions)
 
-    const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-    }, [])
+      // setup marker at position
+      const marker = new Marker({
+        map: map,
+        position: position
+      })
+    }
 
-    return isLoaded ? (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        >
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
-        </GoogleMap>
-    ) : <></>
+    initMap()
+  }, [])
+
+  return(
+    <div style={{height: '600px'}} ref={mapRef}>
+
+    </div>
+  )
 }
 
 export default MapDemo
