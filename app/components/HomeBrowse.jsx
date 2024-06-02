@@ -14,13 +14,13 @@ const HomeBrowse = () => {
     { 
       id: 1,
       imageSrc: '/mc-1.png',
-      title: 'Residential Complex - NS Tau',
+      title: 'Aspire Sukhumvit 48',
       location: 'Sevilla, Palm Harbor',
       description: 'A modern cottage with breathtaking mountain views and an extensive yard, perfect for various types of leisure. The house features four spacious bedrooms and a kitchen area.',
       price: '$5,800/ m',
       details: ['4', '6', '23x42 m2'],
-      lat: 13.605239892371365,
-      lng: 100.84735795566397
+      lat: 13.71109,
+      lng: 100.59393
     },
     {
       id: 2,
