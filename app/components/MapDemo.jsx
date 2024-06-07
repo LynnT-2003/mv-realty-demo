@@ -44,7 +44,7 @@ const MapDemo = ({ lat, lng }) => {
 
       const mapOptions = {
         center: position,
-        zoom: 17,
+        zoom: 16,
         styles: mapStyles // Apply custom styles
       };
 
@@ -90,7 +90,7 @@ const MapDemo = ({ lat, lng }) => {
 
                     // Create a custom InfoWindow
                     const infoWindowContent = `
-                    <div class="custom-info-window">
+                    <div>
                       <strong>${place.name}</strong><br>
                       Distance: ${distance}<br>
                       Walking duration: ${duration}

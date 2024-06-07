@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 const ListingCard = ({ imageSrc, title, location, description, price, details }) => {
   return (
     <div className='rounded-lg hover:bg-slate-100 cursor-pointer pl-4'>
-      <Grid container spacing={2} alignItems="center" className='rounded-lg pb-6 my-4'>
+      <Grid container spacing={4} alignItems="center" className='rounded-lg pb-6 my-4'>
           <Grid item md={4} className='flex items-center justify-center' style={{ height: '200px' }}>
             <img src={imageSrc} className='rounded-lg h-full object-cover' alt={title} />
           </Grid>

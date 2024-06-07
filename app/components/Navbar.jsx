@@ -1,7 +1,10 @@
+"use client"
 import React from "react";
 import {navLists} from "../constants"
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <header className="w-full py-5 sm:px-10 px-5 flex justify-between items-center">
       <nav className="flex w-full screen-max-width">
@@ -11,6 +14,7 @@ const Navbar = () => {
             <div
               key={nav}
               className="px-5 text-sm cursor-pointer text-gray hover:font-light hover:text-base hover:text-slate-500 transition-all"
+              onClick={() => router.push(`/${nav}`)}
             >
               {nav}
             </div>

@@ -34,7 +34,7 @@ const Details = ({params}) => {
         return<div>Listing {id} not found</div>
     }
     return (
-        <div className='mt-10 mx-10'>
+        <div className='mt-10 mx-10 w-[40%] h-[50%]'>
             <MapDemo lat={listing.lat} lng={listing.lng} clas/>
         </div>
     )

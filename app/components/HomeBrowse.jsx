@@ -1,10 +1,10 @@
+"use client"
+
 import React from 'react';
 import { Grid } from '@mui/material';
 import {Button} from '@mui/material';
 import ListingCard from './ui/listing-card';
 import { useRouter } from 'next/navigation';
-
-
 
 const HomeBrowse = () => {
 
@@ -56,7 +56,7 @@ const HomeBrowse = () => {
           ))}
         </Grid>
         <Grid item md={4}>
-          <div className='h-full bg-blue-100 rounded-xl mr-4 px-8 py-6'>
+          <div className='h-full bg-blue-100 rounded-xl mr-4 px-8 py-8'>
             <h1 className='font-medium text-3xl'>Filter properties</h1>
             <Button>All</Button>
             <Button>House</Button>
