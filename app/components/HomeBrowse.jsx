@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import {Button} from '@mui/material';
 import ListingCard from './ui/listing-card';
@@ -9,8 +10,31 @@ import { useRouter } from 'next/navigation';
 const HomeBrowse = () => {
 
   const router = useRouter();
+  const [listings, setListings] = useState([]);
 
-  const listings = [
+  useEffect(() => {
+    // Fetch data from backend when component mounts
+    fetchListings();
+  }, []); 
+
+  useEffect(() => {
+    console.log(listings);
+  }, [listings])
+
+  const fetchListings = async () => {
+    try {
+      const response = await fetch('https://mv-realty-api-production.up.railway.app/condos');
+      if (!response.ok) {
+        throw new Error('Failed to fetch listings');
+      }
+      const data = await response.json();
+      setListings(data); // Update listings state with fetched data
+    } catch (error) {
+      console.error('Error fetching listings:', error);
+    }
+  };
+
+  const listings_default = [
     { 
       id: 1,
       imageSrc: '/mc-1.png',
@@ -39,7 +63,7 @@ const HomeBrowse = () => {
     <div className='my-8 ml-8 mr-4'>
       <Grid container spacing={2} className="bg-white rounded-lg">
         <Grid item md={8} className=''>
-          {listings.map((listing, index) => (
+          {listings_default.map((listing, index) => (
             <div key={index} onClick={() => {
               router.push(`/details/${listing.id}`)
             }}>
