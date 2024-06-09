@@ -23,7 +23,12 @@ const HomeBrowse = () => {
 
   const fetchListings = async () => {
     try {
-      const response = await fetch('https://mv-realty-api-production.up.railway.app/condos');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/condos`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
+        }
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch listings');
       }
